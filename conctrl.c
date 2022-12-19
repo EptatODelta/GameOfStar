@@ -22,20 +22,5 @@ void setColor(Byte Color, Byte isBGColor, Byte isBold, Byte isUnderlined, Byte i
 
 
 //----Termios Console Modes----
-void switchModes(struct termios* A) {
-	tcsetattr(STDIN_FILENO, TCSANOW, A);
-}
-void getCurConMode(struct termios* A) {
-	tcgetattr(STDIN_FILENO, A);
-}
-void changeModeFlags(struct termios* A, Byte flags) {
-	(*A).c_lflag &= flags;
-}
-
-
-
-void func() {
-	printf("%d", programState);
-}
 
 

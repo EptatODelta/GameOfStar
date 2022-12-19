@@ -17,9 +17,6 @@ void resetColor();
 
 
 //termios console modes
-void switchModes(struct termios*);
-void getCurConMode(struct termios*);
-void changeModeFlags(struct termios*, Byte);
 
 void func();
 

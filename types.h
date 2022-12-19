@@ -2,6 +2,7 @@
 #define TYPES_H_
 
 #include <pthread.h>
+#include <sys/ioctl.h>
 
 //-----defines-----
 
@@ -14,10 +15,23 @@
 #define CYAN  6
 #define WHITE 7
 
+#define MIN(a,b) ((a)<(b)?(a):(b))
+#define MAX(a,b) ((a)>(b)?(a):(b))
 
+#define String(a,b) char a[b]
 
-
-
+#define BYTE_ULIMIT	       255
+#define BYTE_SLIMIT	       127
+#define BYTE_NSLIMIT	      -128
+#define WORD_ULIMIT	     65535
+#define WORD_SLIMIT	     32767
+#define WORD_NSLIMIT	    -32768
+#define DWORD_ULIMIT	4294967295
+#define DWORD_SLIMIT	2147483647
+#define DWORD_NSLIMIT  -2147483648
+#define QWORD_ULIMIT  1.8446744e19
+#define QWORD_SLIMIT   9.223372e18
+#define QWORD_NSLIMIT -9.223372e18
 
 //-----structs-----
 
@@ -27,6 +41,12 @@ typedef struct Position {
 typedef struct Size {
 	short X, Y;
 } Size;
+typedef struct Arrays {
+	float* mem1;
+	int mem1Len;
+	char* memStr;
+	int memStrLen;
+} ArraysList;
 
 
 
@@ -34,7 +54,6 @@ typedef struct Size {
 
 typedef unsigned char Byte;
 typedef unsigned char Mode;
-
 
 
 //-----unions------
@@ -50,9 +69,10 @@ typedef unsigned char Mode;
 
 //-----externs-----
 extern char programState, KBinput;
-extern float mem[16];
 extern Position CursorPos;
 extern pthread_t InputThread;
-
+extern long long runTime;
+extern ArraysList arraysMgm;
+extern struct winsize ConSize;
 
 #endif
