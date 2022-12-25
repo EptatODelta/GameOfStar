@@ -1,7 +1,8 @@
-#include "types.h"
 #include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
+
+#include "types.h"
 
 //-----Cursor Controls-----
 void moveCursor(short X, int Y, Byte isRel, Position CursorPos) {

@@ -6,7 +6,7 @@
 #include <pthread.h>
 #include <sys/ioctl.h>
 
-
+#include "output.h"
 #include "types.h"
 #include "conctrl.h"
 #include "input.h"
@@ -88,7 +88,8 @@ void* TimeThreadProcedure(void* arg)
 	while(programState>0) {
 		runTime = (long long)(clock() / CLOCKS_PER_SEC);
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &ConSize);
-		usleep(500*1000); 
+		arraysMgm.mem1[0] = (float)ConSize.ws_col, arraysMgm.mem1[1] = (float)ConSize.ws_row;
+		usleep(500*1000);
 	}
 	pthread_exit(NULL);
 }
@@ -110,7 +111,7 @@ int main (int argc, char *argv[])
 	pthread_attr_init (&InputThreadAttr); pthread_attr_init (&TimeThreadAttr);
 
 	String(Astring, 7) = "Hello!\0";
-	String(OutString, 8) = "      \0";
+	String(OutString, 45) = "A string.\n\0";
 	
 	//---Starting-Procedures---
 	
@@ -122,36 +123,20 @@ int main (int argc, char *argv[])
 Menu:
 	while(programState==1) {
 		switch(KBinput) {
-			case 1: strCopy(Astring, OutString); break;
-			case 2: strRes(OutString); break;
-			case 3: strFill(OutString, 'A'); break;
-			case 4: strFill(OutString, '$'); break;
-			case 5: arraysMgm.mem1[0] = (float)Invert((char) arraysMgm.mem1[0]); break;
-			case 6: strDecr1(OutString); break;
-			case 7: strDecr1(Astring); break;
-			case 8: arraysMgm.mem1[1] = (float)Invert((char) arraysMgm.mem1[1]); break;
-			case 9: arraysMgm.mem1[2] = (float)Invert((char) arraysMgm.mem1[2]); break;
+			case 1: break;
 			default:break;
+			case ESCAPE: break;
 		} KBinput = 0;
 		
+
+		OutChar('\n');
+		OutStrLines("Hello everybo more than two- heddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddllo? Okay...\n\0", (short)arraysMgm.mem1[0], (short)arraysMgm.mem1[1]);
+
+		
+		fflush(stdout);
+
 		usleep(83333);
 		system("clear");
-		
-		printf("\"%s\"", OutString);
-	
-		if(arraysMgm.mem1[1] == 1) {	
-			if(strCompLen(Astring, OutString) == -1) printf(" |Shorter|");
-			else if (strCompLen(Astring, OutString) == 1) printf(" |Longer|");
-			else printf(" |Equal|");
-		}
-
-		if(arraysMgm.mem1[0] == 1) printf(" |%d||%d|", strLen(OutString), strLen(Astring));
-		
-		if(arraysMgm.mem1[2] == 1) {
-			printf("\n\nHello World! A String controlling demo No.1. Press: \nEsc to leave.\n1 to load the saved string to shown.\n2 to reset the shown string.\n3 to fill the shown string with \'A\'-s.\n4 to load the shown string with \'$\'-s.\n5 to toggle string lengths output.\n6 to decrease the shown string size.\n7 to decrease the saved string size.\n8 to toggle comparison.\n9 to toggle this help.\n\n The syntax is:\n{\"[SavedString]\" |[Comparing results(shown to saved)]| |[shownStringLen]||[savedStringLen]|}\n\n");
-		}
-
-		fflush(stdout);
 	}
 
 Mode1:

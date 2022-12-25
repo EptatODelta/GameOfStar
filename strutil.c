@@ -1,4 +1,5 @@
 #include "types.h"
+#include <stdio.h>
 
 
 
@@ -24,11 +25,21 @@ void strRes(char* string) {
 	}
 	string[len] = '\0';
 }
+void strInit(char* string, const short len) {
+	for(int i = 0; i < len; i++) {
+		string[i] = ' ';
+		printf("A");
+	}
+	string[len] = '\0';
+}
 void strFill(char* string, const char val) {
 	short len = strLen(string);
 	for(int i = 0; i < len; i++) {
 		string[i] = val;
 	}
+}
+void strFillTo(char* string, const char val, const short to) {
+	for(int i = 0; i < to; i++) string[i] = val;
 }
 
 int strCopy(const char* stringFrom, char* stringTo) {
@@ -57,6 +68,36 @@ void strDecr1(char* string) {
 	string[Len - 1] = '\0';
 }
 
+short strFindChFirst(char* string, const char val) {
+	short Len = strLen(string);
+	for(int i = 0; i < Len; i++) {
+		if(string[i] == val) return i;
+	}
+	return -1;
+}
+short strFindChLast(char* string, const char val) {
+	short Len = strLen(string);
+	for(int i = Len; i >= 0; i--) {
+		if(string[i] == val) return i;
+	}
+	return -1;
+}
+
+void strShift(char* string, int N) {
+    int length = strLen(string);
+
+    if(N == 0) return;
+    else if(N < 0) {
+        for(int i = 0; i < length; i++) {
+          string[i] = string[-N + i];
+        }
+    } else {
+        for(int i = length - N - 1; i >= 0; i--) {
+          string[i + N] = string[i];
+        }
+		string[length] = 0;
+    }
+}
 
 
 char Invert(const char in) {

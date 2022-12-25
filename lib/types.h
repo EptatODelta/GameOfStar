@@ -15,17 +15,19 @@
 #define CYAN  6
 #define WHITE 7
 
+#define ESCAPE 53
+
 #define MIN(a,b) ((a)<(b)?(a):(b))
 #define MAX(a,b) ((a)>(b)?(a):(b))
 
 #define String(a,b) char a[b]
 
-#define BYTE_ULIMIT	       255
-#define BYTE_SLIMIT	       127
+#define BYTE_ULIMIT			   255
+#define BYTE_SLIMIT			   127
 #define BYTE_NSLIMIT	      -128
-#define WORD_ULIMIT	     65535
-#define WORD_SLIMIT	     32767
-#define WORD_NSLIMIT	    -32768
+#define WORD_ULIMIT	     	 65535
+#define WORD_SLIMIT			 32767
+#define WORD_NSLIMIT		-32768
 #define DWORD_ULIMIT	4294967295
 #define DWORD_SLIMIT	2147483647
 #define DWORD_NSLIMIT  -2147483648

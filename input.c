@@ -1,5 +1,5 @@
-
 #include <stdio.h>
+
 #include "types.h"
 
 char ChToSmall(char Input) {

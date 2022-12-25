@@ -1,9 +1,10 @@
 #ifndef CONCTRL_H_
 #define CONCTRL_H_
 
-#include "types.h"
 #include <termios.h>
 #include <stdio.h>
+
+#include "types.h"
 
 //cursor controls
 void moveCursor(short, int, Byte, Position);
