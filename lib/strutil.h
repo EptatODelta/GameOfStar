@@ -3,7 +3,7 @@
 
 short strLen(const char*);
 void strRes(char*);
-void strInit(char*, const char);
+void strInit(char*, const short);
 void strFill(char*, const char);
 void strFillTo(char*, const char, const short);
 int strCopy(const char*, char*);

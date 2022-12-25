@@ -28,7 +28,7 @@ void strRes(char* string) {
 void strInit(char* string, const short len) {
 	for(int i = 0; i < len; i++) {
 		string[i] = ' ';
-		printf("A");
+		printf(" ");
 	}
 	string[len] = '\0';
 }

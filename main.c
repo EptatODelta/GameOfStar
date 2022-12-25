@@ -130,7 +130,7 @@ Menu:
 		
 
 		OutChar('\n');
-		OutStrLines("Hello everybo more than two- heddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddllo? Okay...\n\0", (short)arraysMgm.mem1[0], (short)arraysMgm.mem1[1]);
+		OutStrLines("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\n\0", (short)arraysMgm.mem1[0], (short)arraysMgm.mem1[1]);
 
 		
 		fflush(stdout);
