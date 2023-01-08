@@ -9,7 +9,7 @@
 #include "output.h"
 #include "types.h"
 #include "conctrl.h"
-#include "input.h"
+#include "coninput.h"
 #include "strutil.h"
 #include "threadproc.h"
 #include "progSE.h"
@@ -47,7 +47,6 @@ int main (int argc, char *argv[])
 	
 	
 //strings
-	char tempString[13] = "!dlroW olleH";
 
 	//---Starting-Procedures---
 	
@@ -60,14 +59,13 @@ Menu:
 	while(programState==1) {
 		switch(KBinput) {
 			case 1: break;
-			case 27:strRotate(tempString); break;
 			default:break;
 			case ESCAPE: break;
 		} KBinput = 0;
-		
-		fflush(stdout);
 
-		OutStr(tempString);
+		OutText("Idfc 1987 was the damn year when the bite of 87 was done", 20, 5, 0);
+
+		fflush(stdout);
 
 		usleep(83333);
 		system("clear");

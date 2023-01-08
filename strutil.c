@@ -18,6 +18,24 @@ short strLen(const char* string) {
 	return 0;
 }
 
+short strMaxWordLen(const char* string) {
+	short length = strLen(string), wordMaxLength = 0, tempWordLength = 0;
+
+    for(int i = 0; i < length; i++) {
+        if(string[i] == ' ') {
+            if(tempWordLength > wordMaxLength) { wordMaxLength = tempWordLength; } 
+            tempWordLength = 0; continue; }
+        else {
+            tempWordLength++;
+        }
+    }
+	if(tempWordLength > wordMaxLength) wordMaxLength = tempWordLength;
+
+	return wordMaxLength;
+}
+
+
+
 void strRes(char* string) {
 	short len = strLen(string);
 	for(int i = 0; i < len; i++) {
@@ -27,7 +45,7 @@ void strRes(char* string) {
 }
 void strInit(char* string, const short len) {
 	for(int i = 0; i < len; i++) {
-		string[i] = 'a';
+		string[i] = ' ';
 	}
 	string[len] = '\0';
 }
@@ -39,6 +57,13 @@ void strFill(char* string, const char val) {
 }
 void strFillTo(char* string, const char val, const short to) {
 	for(int i = 0; i < to; i++) string[i] = val;
+}
+void strFillPartRel(char*string,const char val, const short start, const short length) {
+	for(int i = start; i < length; i++) string[i] = val;
+}
+void strFillPart(char*string, const char val, const short start, const short end) {
+	if(end <= start) return;
+	strFillPartRel(string, val, start, end-start);
 }
 
 int strCopy(const char* stringFrom, char* stringTo) {
@@ -102,15 +127,14 @@ void strRotate(char* string) {
 
 	char tempStr[length];
 	strInit(tempStr, length);
-	printf("a %d\n", length);
 	
 	for(int i = 0; i < length; i++) {
-		tempStr[i] = string[length - i];
-		printf("%d %d %s\t%s\n", i, (length-i), tempStr, string);
+		tempStr[i] = string[length - i - 1];
 	}
 	strCopy(tempStr, string);
 	return;
 }
+
 
 
 char Invert(const char in) {

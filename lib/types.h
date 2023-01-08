@@ -20,7 +20,7 @@
 #define MIN(a,b) ((a)<(b)?(a):(b))
 #define MAX(a,b) ((a)>(b)?(a):(b))
 
-#define String(a,b) char a[b]
+#define StringCreate(a,b) char a[b]
 
 #define BYTE_ULIMIT			   255
 #define BYTE_SLIMIT			   127

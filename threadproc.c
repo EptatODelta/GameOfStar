@@ -5,7 +5,7 @@
 #include <time.h>
 
 #include "types.h"
-#include "input.h"
+#include "coninput.h"
 
 extern void* InputThreadProcedure(void* arg)
 {	

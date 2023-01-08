@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 #include "strutil.h"
@@ -7,6 +8,7 @@
 
 void OutChar(const char ch) {
     write(1,&ch,1);
+    fflush(stdout);
     return;
 }
 void OutNum(int num) {
@@ -33,4 +35,11 @@ void OutStrLim(const char* String, const short maxLimit) {
     short length = strLen(String);
     if( length < maxLimit ) write(1, String, length);
     else write(1, String, maxLimit);
+}
+
+
+
+
+void OutText(const char* String, const short LineLength, const short LineNum, const Byte type) {
+    
 }
