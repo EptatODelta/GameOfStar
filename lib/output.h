@@ -9,6 +9,5 @@ void OutChar(const char);
 void OutNum(const int);
 void OutStr(const char*);
 void OutStrLim(const char*, const short);
-void OutStrLines(const char*, const short, const short);
 
 #endif

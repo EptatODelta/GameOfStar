@@ -14,6 +14,7 @@ void strDecr1(char*);
 void strFindChFirst(char*, const char);
 void strFindChLast(char*, const char);
 void strShift(char*, const short);
+void strRotate(char*);
 
 char Invert(const char in);
 

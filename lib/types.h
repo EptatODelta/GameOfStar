@@ -73,6 +73,7 @@ typedef unsigned char Mode;
 extern char programState, KBinput;
 extern Position CursorPos;
 extern pthread_t InputThread;
+extern pthread_t TimeThread;
 extern long long runTime;
 extern ArraysList arraysMgm;
 extern struct winsize ConSize;

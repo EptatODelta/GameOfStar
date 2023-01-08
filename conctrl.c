@@ -5,9 +5,9 @@
 #include "types.h"
 
 //-----Cursor Controls-----
-void moveCursor(short X, int Y, Byte isRel, Position CursorPos) {
+void moveCursor(short X, int Y, Byte isRel, Position CurPos) {
 	if (isRel == 0) { printf("\e[%d;%dH", Y, X); }
-	if (isRel == 1) { printf("\e[%d;%dH", Y+CursorPos.Y, X+CursorPos.X); }
+	if (isRel == 1) { printf("\e[%d;%dH", Y+CurPos.Y, X+CurPos.X); }
 }
 void hideCursor() { printf("\e[?25l"); }
 void showCursor() { printf("\e[?25h"); }
@@ -20,8 +20,5 @@ void setColor(Byte Color, Byte isBGColor, Byte isBold, Byte isUnderlined, Byte i
 	printf("\e[0m");
 }
 
-
-
-//----Termios Console Modes----
 
 

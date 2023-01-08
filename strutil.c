@@ -27,8 +27,7 @@ void strRes(char* string) {
 }
 void strInit(char* string, const short len) {
 	for(int i = 0; i < len; i++) {
-		string[i] = ' ';
-		printf(" ");
+		string[i] = 'a';
 	}
 	string[len] = '\0';
 }
@@ -97,6 +96,20 @@ void strShift(char* string, int N) {
         }
 		string[length] = 0;
     }
+}
+void strRotate(char* string) {
+	const short length = strLen(string);
+
+	char tempStr[length];
+	strInit(tempStr, length);
+	printf("a %d\n", length);
+	
+	for(int i = 0; i < length; i++) {
+		tempStr[i] = string[length - i];
+		printf("%d %d %s\t%s\n", i, (length-i), tempStr, string);
+	}
+	strCopy(tempStr, string);
+	return;
 }
 
 
