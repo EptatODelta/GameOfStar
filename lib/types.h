@@ -17,10 +17,22 @@
 
 #define ESCAPE 53
 
-#define MIN(a,b) ((a)<(b)?(a):(b))
+#define FALSE 0
+#define TRUE  1
+#define Null  0
+
+#define MIN(a,b) ((a)<(b)?(a):(b))
 #define MAX(a,b) ((a)>(b)?(a):(b))
 
 #define StringCreate(a,b) char a[b]
+
+#define OUTNUM__UNSIGNED		  1
+#define OUTNUM__POST_BASE11		  2
+#define OUTNUM__FORMATTING		  4
+#define OUTNUM__BASE_OUTPUT		  8
+#define OUTNUM__BASE_OUTPUT_TYPE 16
+#define OUTNUM__IS_FLOAT		 32
+#define OUTNUM__FLOAT_PERIOD	 64
 
 #define BYTE_ULIMIT			   255
 #define BYTE_SLIMIT			   127
@@ -60,7 +72,25 @@ typedef unsigned char Mode;
 
 //-----unions------
 
+typedef union Variable {
+	unsigned int uINT32;
+	int INT32;
+	unsigned short uSHORT16;
+	short SHORT16;
+	unsigned long long int uLONG64;
+	long long int LONG64;
 
+	unsigned char uBYTE8;
+	char BYTE8;
+
+	void* POINTER;
+
+	float FLOAT32;
+	double FLOAT64;
+
+	long long int key[2];
+} let;
+typedef let HTable;
 
 
 

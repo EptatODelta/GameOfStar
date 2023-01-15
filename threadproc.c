@@ -6,6 +6,7 @@
 
 #include "types.h"
 #include "coninput.h"
+#include "conctrl.h"
 
 extern void* InputThreadProcedure(void* arg)
 {	
@@ -33,6 +34,7 @@ extern void* TimeThreadProcedure(void* arg)
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &ConSize);
 		arraysMgm.mem1[0] = (float)ConSize.ws_col, arraysMgm.mem1[1] = (float)ConSize.ws_row;
 		usleep(500*1000);
+		fflush(stdout);
 	}
 	pthread_exit(NULL);
 }

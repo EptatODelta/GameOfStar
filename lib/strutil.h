@@ -25,6 +25,13 @@ short strFindChLast(char*, const char);
 void strShift(char*, const short);
 void strRotate(char*);
 
+void strReplaceChars(char*, const char, const char);
+void strReplaceMapping(char*, const char*);
+
+unsigned long strHash(const char*);
+
+void strFillRand(char*);
+
 char Invert(const char in);
 
 

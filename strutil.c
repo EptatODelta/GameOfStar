@@ -1,6 +1,6 @@
-#include "types.h"
-#include <stdio.h>
 
+#include "types.h"
+#include <stdlib.h>
 
 
 short strLen(const char* string) {
@@ -136,6 +136,37 @@ void strRotate(char* string) {
 }
 
 
+void strReplaceChars(char* string, const char toReplace, const char With) {
+	int length = strLen(string);
+	for(int i = 0; i < length; i++) {
+		if(string[i] == toReplace) {
+			string[i] = With;
+    	}
+	}
+}
+void strReplaceMapping(char* string, const char* mapping) {
+	int length = strLen(string);
+	for(int i = 0; i < length; i++) {
+		string[i] = mapping[string[i]];
+	}
+}
+
+
+unsigned long strHash(const char* str) {
+	unsigned long hash = 5381;
+	int c;
+	while ((c = *str++)) {
+		hash = ((hash << 5) + hash) + c;
+	}
+	return hash;
+}
+
+void strFillRand(char* string) {
+	short len = strLen(string);
+	for(int i = 0; i < len; i++) {
+		string[i] = rand() % 95 + 32;
+	} return;
+}
 
 char Invert(const char in) {
 	if(in == 0) return 1;

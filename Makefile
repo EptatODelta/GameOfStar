@@ -1,11 +1,17 @@
 
-Game1.out: main.o libconctrl.a libconinput.a liboutput.a libstrutil.a libthreadproc.a libprogSE.a
-	gcc -Ilib main.o -lpthread -Llib/static -lprogSE -lthreadproc -lconctrl -lconinput -loutput -lstrutil -o Game1.out -no-pie
+Game1.out: main.o libconctrl.a libconinput.a liboutput.a libstrutil.a libthreadproc.a libprogSE.a libmathsutil.a libdatautil.a
+	gcc -Wno-format -Ilib main.o -lpthread -Llib/static -lprogSE -lthreadproc -lconctrl -lconinput -loutput -lstrutil -lmathsutil -ldatautil -o Game1.out -no-pie
 	rm *.o
 	rm lib/static/*.a
 
 main.o:
 	gcc -Ilib -c main.c -o main.o
+
+libmathsutil.a: mathsutil.o
+	ar rc lib/static/libmathsutil.a mathsutil.o
+
+libdatautil.a: datautil.o
+	ar rc lib/static/libdatautil.a datautil.o
 
 libconctrl.a: conctrl.o
 	ar rc lib/static/libconctrl.a conctrl.o
@@ -24,6 +30,12 @@ liboutput.a: output.o
 
 libprogSE.a: progSE.o
 	ar rc lib/static/libprogSE.a progSE.o
+
+mathsutil.o:
+	gcc -Ilib -c mathsutil.c -o mathsutil.o
+
+datautil.o:
+	gcc -Ilib -c datautil.c -o datautil.o
 
 conctrl.o:
 	gcc -Ilib -c conctrl.c -o conctrl.o

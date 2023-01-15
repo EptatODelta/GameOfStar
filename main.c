@@ -13,6 +13,10 @@
 #include "strutil.h"
 #include "threadproc.h"
 #include "progSE.h"
+#include "datautil.h"
+#include "mathsutil.h"
+
+//OUTNUM__FLOAT_PERIOD OUTNUM__IS_FLOAT OUTNUM__BASE_OUTPUT_TYPE OUTNUM__BASE_OUTPUT OUTNUM__FORMATTING OUTNUM__POST_BASE11 OUTNUM__UNSIGNED
 
 //---------Working Memory Processing---------
 
@@ -48,10 +52,11 @@ int main (int argc, char *argv[])
 	
 //strings
 
+//others
 	//---Starting-Procedures---
 	
 	atStart(InputThread, TimeThread, InputThreadAttr, TimeThreadAttr, InputThreadProcedure, TimeThreadProcedure);
-	arraysMgm.mem1[2] = 1;
+	arraysMgm.mem1[0] = 20;
 
 	//-----------Body----------
 	
@@ -63,18 +68,12 @@ Menu:
 			case ESCAPE: break;
 		} KBinput = 0;
 
-		OutText("Idfc 1987 was the damn year when the bite of 87 was done", 20, 5, 0);
-
 		fflush(stdout);
 
-		usleep(83333);
+		usleep(833333);
 		system("clear");
 	}
 
-Mode1:
-	while(programState==2) {
-
-	}
 	
 	resetMem(arraysMgm.mem1);
 	switch(programState) {
@@ -83,7 +82,6 @@ Mode1:
 			atEnd(0);
 		}
 		case 1: goto Menu;
-		case 2: goto Mode1;
 	}
 }
 
