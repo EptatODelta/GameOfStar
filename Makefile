@@ -1,6 +1,6 @@
 
-Game1.out: main.o libconctrl.a libconinput.a liboutput.a libstrutil.a libthreadproc.a libprogSE.a libmathsutil.a libdatautil.a
-	gcc -Wno-format -Ilib main.o -lpthread -Llib/static -lprogSE -lthreadproc -lconctrl -lconinput -loutput -lstrutil -lmathsutil -ldatautil -o Game1.out -no-pie
+Proj1.out: main.o libconctrl.a libconinput.a liboutput.a libstrutil.a libthreadproc.a libprogSE.a libmathsutil.a libdatautil.a
+	gcc -Wno-format -Ilib main.o -lm -lpthread -Llib/static -lprogSE -lthreadproc -lconctrl -lconinput -loutput -lstrutil -lmathsutil -ldatautil -o Proj1.out -no-pie
 	rm *.o
 	rm lib/static/*.a
 

@@ -69,6 +69,25 @@ typedef struct Arrays {
 typedef unsigned char Byte;
 typedef unsigned char Mode;
 
+typedef void*  			  Func;
+typedef double 			M_Func;
+typedef long long int	I_Func;
+typedef char   			C_Func;
+typedef char*  			S_Func;
+typedef unsigned char 	B_Func;
+
+typedef char 					 INT_8;
+typedef short 					 INT_16;
+typedef int 					 INT_32;
+typedef long long int 			 INT_64;
+typedef unsigned char 			UINT_8;
+typedef unsigned short 			UINT_16;
+typedef unsigned int 			UINT_32;
+typedef unsigned long long int 	UINT_64;
+
+typedef float  FINT_32;
+typedef double FINT_64;
+
 
 //-----unions------
 

@@ -159,7 +159,7 @@ void OutNum(const long long signed int num, const Byte type, const Byte base, co
     double fracPart = tempInt - intPart;
     if (!(type & OUTNUM__UNSIGNED) && negative ) { write(STDOUT_FILENO, "-", 1); fflush(stdout); CursorPos.X++; }
     fflush(stdout);
-    OutNum(intPart, OUTNUM__UNSIGNED, 10, 0);
+    OutNum(intPart, OUTNUM__UNSIGNED | type & OUTNUM__FORMATTING, 10, 0);
     OutChar((((type & OUTNUM__FLOAT_PERIOD) >= 1) ? ',' : '.'));
 
     for(int i = 0; i<base; i++) {
