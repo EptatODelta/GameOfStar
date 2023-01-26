@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 #include "strutil.h"
 #include "types.h"
@@ -42,6 +43,7 @@ void OutStr(const char*);
 
 void OutNum(const long long signed int num, const Byte type, const Byte base, const double value) {
     if(type & OUTNUM__IS_FLOAT) goto floating;
+    if(type & OUTNUM__SCIENTIFIC_NOTATION) goto scientific;
 
     long long signed int temp = num;
     if(temp == 0) {
@@ -169,6 +171,18 @@ void OutNum(const long long signed int num, const Byte type, const Byte base, co
         if (fracPart - (double)digit > 1e-6) fracPart -= digit;
         else break;
     }
+    return;
+
+    scientific:
+
+    if(value == 0) { OutChar('0'); return; }
+
+    OutNum(0, OUTNUM__IS_FLOAT, 4, value/(pow(10, M_SciNotatExp(value)) != 0 ? pow(10, M_SciNotatExp(value)) : 1));
+    
+    OutChar('E');
+    OutNum(M_SciNotatExp(value), 0, 10, 0);
+    
+
     return;
 }
 

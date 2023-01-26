@@ -33,6 +33,8 @@
 #define OUTNUM__BASE_OUTPUT_TYPE 16
 #define OUTNUM__IS_FLOAT		 32
 #define OUTNUM__FLOAT_PERIOD	 64
+#define OUTNUM__SCIENTIFIC_NOTATION 128
+#define OUTNUM__SCIENTIFIC_NOTATION_TYPE 255
 
 #define BYTE_ULIMIT			   255
 #define BYTE_SLIMIT			   127
@@ -55,12 +57,6 @@ typedef struct Position {
 typedef struct Size {
 	short X, Y;
 } Size;
-typedef struct Arrays {
-	float* mem1;
-	int mem1Len;
-	char* memStr;
-	int memStrLen;
-} ArraysList;
 
 
 
@@ -121,10 +117,10 @@ typedef let HTable;
 //-----externs-----
 extern char programState, KBinput;
 extern Position CursorPos;
+extern Size WindowSize;
 extern pthread_t InputThread;
 extern pthread_t TimeThread;
 extern long long runTime;
-extern ArraysList arraysMgm;
 extern struct winsize ConSize;
 
 #endif

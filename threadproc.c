@@ -3,6 +3,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <time.h>
+#include <math.h>
 
 #include "types.h"
 #include "coninput.h"
@@ -32,7 +33,7 @@ extern void* TimeThreadProcedure(void* arg)
 	while(programState>0) {
 		runTime = (long long)(clock() / CLOCKS_PER_SEC);
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &ConSize);
-		arraysMgm.mem1[0] = (float)ConSize.ws_col, arraysMgm.mem1[1] = (float)ConSize.ws_row;
+		WindowSize.X = (float)ConSize.ws_col, WindowSize.Y = (float)ConSize.ws_row;
 		usleep(500*1000);
 		fflush(stdout);
 	}

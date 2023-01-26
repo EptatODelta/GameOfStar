@@ -1,5 +1,6 @@
 
 #include "types.h"
+#include <math.h>
 #include <stdlib.h>
 
 

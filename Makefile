@@ -1,6 +1,6 @@
 
 Proj1.out: main.o libconctrl.a libconinput.a liboutput.a libstrutil.a libthreadproc.a libprogSE.a libmathsutil.a libdatautil.a
-	gcc -Wno-format -Ilib main.o -lm -lpthread -Llib/static -lprogSE -lthreadproc -lconctrl -lconinput -loutput -lstrutil -lmathsutil -ldatautil -o Proj1.out -no-pie
+	gcc -Wno-format -Ilib main.o  -lpthread -Llib/static -lprogSE -lthreadproc -lconctrl -lconinput   -lmathsutil -ldatautil -loutput -lstrutil -lm -o Proj1.out -no-pie
 	rm *.o
 	rm lib/static/*.a
 
@@ -32,10 +32,10 @@ libprogSE.a: progSE.o
 	ar rc lib/static/libprogSE.a progSE.o
 
 mathsutil.o:
-	gcc -Ilib -c mathsutil.c -o mathsutil.o
+	gcc -Ilib -c mathsutil.c -lm -o mathsutil.o
 
 datautil.o:
-	gcc -Ilib -c datautil.c -o datautil.o
+	gcc -Ilib -c datautil.c -lm -o datautil.o
 
 conctrl.o:
 	gcc -Ilib -c conctrl.c -o conctrl.o
